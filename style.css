@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.video-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  max-width: 90%;
+}
+
+.content h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+.content button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.content button:hover {
+  background-color: white;
+  transform: scale(1.05);
+}
+
+.flower {
+  position: fixed;
+  width: 40px;
+  animation: fly 3s linear forwards;
+  z-index: 999;
+}
+
+@keyframes fly {
+  0% {
+    opacity: 1;
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(720deg);
+  }
+}
+.balloon {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50% 50% 45% 45%;
+  animation: floatCurve linear forwards;
+  z-index: 999;
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+/* Uzun ve kıvrımlı kuyruk */
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  transform: translateX(-50%) rotate(5deg);
+  animation: sway 1s infinite alternate ease-in-out;
+}
+
+/* Kuyruk sallanıyor gibi efekt */
+@keyframes sway {
+  from {
+    transform: translateX(-50%) rotate(-10deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(10deg);
+  }
+}
+
+/* Kıvrımlı uçuş */
+@keyframes floatCurve {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-25vh) translateX(-10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-75vh) translateX(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(-110vh) translateX(15px) rotate(-5deg);
+    opacity: 0;
+  }
+}
+
+.svg-heart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#animated-heart {
+  transition: all 1.2s ease-in-out;
+  transform: scale(1);
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+}
+
+#animated-heart.open {
+  transform: scale(3) rotate(15deg);
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.final-video {
+  width: 80vw;
+  max-width: 800px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+  margin-top: 30px;
+}
